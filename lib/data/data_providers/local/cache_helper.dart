@@ -19,6 +19,8 @@ class CacheHelper {
       return await sharedPreferences.setString(key, value);
     } else if (value is int) {
       return await sharedPreferences.setInt(key, value);
+    } else if (value is List<String>) {
+      return await sharedPreferences.setStringList(key, value);
     } else {
       return await sharedPreferences.setDouble(key, value);
     }
@@ -28,7 +30,7 @@ class CacheHelper {
     return await sharedPreferences.remove(key);
   }
 
-  static Future clearData(){
+  static Future clearData() {
     return sharedPreferences.clear();
   }
 }
