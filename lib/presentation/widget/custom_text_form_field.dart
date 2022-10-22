@@ -30,6 +30,9 @@ class CustomTextFormField extends StatelessWidget {
     this.textAlignVertical,
     this.inputFormatters,
     this.onChanged,
+    this.enabled = true,
+    this.onTap,
+    this.prefix,
   }) : super(key: key);
 
   final String? hint;
@@ -43,64 +46,72 @@ class CustomTextFormField extends StatelessWidget {
   final double fontSize;
   final int? maxLength;
   final Widget? suffix;
+  final Widget? prefix;
   final InputBorder? focusBorder;
   final EdgeInsets? contentPadding;
   final TextAlign? textAlign;
   final TextAlignVertical? textAlignVertical;
   final List<TextInputFormatter>? inputFormatters;
   final Function(String)? onChanged;
+  final Function()? onTap;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
-        boxShadow: boxShadow,
-      ),
-      height: height,
-      margin: margin,
-      child: TextFormField(
-        onChanged: onChanged,
-        maxLength: maxLength,
-        controller: controller,
-        keyboardType: type,
-        style: TextStyle(
-          fontSize: fontSize,
-          color: AppColor.black,
-          fontFamily: 'Inter',
-          fontWeight: FontWeight.w400,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: width,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius),
+          boxShadow: boxShadow,
         ),
-        expands: true,
-        minLines: null,
-        maxLines: null,
-        inputFormatters: inputFormatters,
-        textAlignVertical: textAlignVertical,
-        textAlign: textAlign ?? TextAlign.start,
-        decoration: InputDecoration(
-          isDense: true,
-          contentPadding: contentPadding,
-          isCollapsed: false,
-          suffixIcon: suffix,
-          hintText: hint?.tr(),
-          hintStyle: TextStyle(
+        height: height,
+        margin: margin,
+        child: TextFormField(
+          enabled: enabled,
+          onChanged: onChanged,
+          maxLength: maxLength,
+          controller: controller,
+          keyboardType: type,
+          style: TextStyle(
             fontSize: fontSize,
-            color: AppColor.lightGrey,
+            color: AppColor.black,
             fontFamily: 'Inter',
             fontWeight: FontWeight.w400,
           ),
-          counterText: '',
-          filled: true,
-          fillColor: AppColor.white,
-          border: InputBorder.none,
-          focusedBorder: focusBorder ??
-              OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(
-                  color: AppColor.primary,
+          expands: true,
+          minLines: null,
+          maxLines: null,
+          inputFormatters: inputFormatters,
+          textAlignVertical: textAlignVertical,
+          textAlign: textAlign ?? TextAlign.start,
+          decoration: InputDecoration(
+            prefixIcon: prefix,
+            isDense: true,
+            contentPadding: contentPadding,
+            isCollapsed: false,
+            suffixIcon: suffix,
+            hintText: hint?.tr(),
+            hintStyle: TextStyle(
+              fontSize: fontSize,
+              color: AppColor.lightGrey,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w400,
+            ),
+            counterText: '',
+            filled: true,
+            fillColor: AppColor.white,
+            border: InputBorder.none,
+            focusedBorder: focusBorder ??
+                OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    color: AppColor.primary,
+                  ),
                 ),
-              ),
+          ),
         ),
       ),
     );

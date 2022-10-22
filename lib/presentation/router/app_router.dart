@@ -4,6 +4,7 @@ import 'package:magdsoft_flutter_structure/data/models/product_model.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/screens.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/user/cart_screen.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/user/favourite_screen.dart';
+import 'package:magdsoft_flutter_structure/presentation/screens/user/search_screen.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/user/settings_screen.dart';
 
 class AppRouter {
@@ -37,6 +38,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CartScreen());
       case favouriteScreenRouteName:
         return MaterialPageRoute(builder: (_) => const FavouriteScreen());
+      case searchScreenRouteName:
+        return MaterialPageRoute(builder: (_) => const SearchScreen());
       default:
         return null;
     }

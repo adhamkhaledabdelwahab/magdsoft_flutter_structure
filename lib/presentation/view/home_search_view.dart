@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magdsoft_flutter_structure/constants/routes.dart';
 import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
 import 'package:magdsoft_flutter_structure/presentation/widget/custom_text_form_field.dart';
 
@@ -19,6 +20,11 @@ class HomeSearchView extends StatelessWidget {
         children: [
           Expanded(
             child: CustomTextFormField(
+              onTap: () => Navigator.pushNamed(
+                context,
+                searchScreenRouteName,
+              ),
+              enabled: false,
               suffix: const Icon(
                 Icons.search,
                 color: AppColor.lightGrey,
@@ -63,7 +69,10 @@ class HomeSearchView extends StatelessWidget {
             child: Material(
               color: Colors.transparent,
               child: InkWell(
-                onTap: () {},
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  searchScreenRouteName,
+                ),
                 child: Center(
                   child: Image.asset(
                     'assets/images/search_icon.png',

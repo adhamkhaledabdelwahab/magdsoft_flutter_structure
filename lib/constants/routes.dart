@@ -7,3 +7,4 @@ const helpScreenRouteName = '/help';
 const productScreenRouteName = '/products';
 const favouriteScreenRouteName = '/favourite';
 const cartScreenRouteName = '/cart';
+const searchScreenRouteName = '/search';
